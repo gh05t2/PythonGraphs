@@ -1,4 +1,14 @@
 package Grafos;
 public class MatrizAdyacencia{
-  public static
+  private int filas;
+  private int columnas;
+  private String matriz[][];
+  
+  
+  /**
+    Constructor de objeto
+  */
+  public MatrizAdyacencia(){
+    
+  }
 }

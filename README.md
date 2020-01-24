@@ -1,4 +1,8 @@
 # PythonGraphs
+# Java
+https://www.jc-mouse.net/java/matriz-de-adyacencia-representacion-de-grafos-en-java
+
+# Python
 Páginas matrices:
 http://www.cristalab.com/tutoriales/crear-matrices-en-python-utilizando-listas-c103122l/
 http://www.diegocalvo.es/matrices-en-python/

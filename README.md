@@ -1,4 +1,4 @@
-# PythonGraphs
+# JavaGraphs
 # Java
 https://www.jc-mouse.net/java/matriz-de-adyacencia-representacion-de-grafos-en-java
 http://www.myjavazone.com/2011/03/grafo-dinamico.html

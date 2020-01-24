@@ -1,20 +1,16 @@
 import java.util.Scanner;
 
+public class VariableNombre
+{
+    public static void main(String[] args)
+    {
+        String linea;
 
-public class TestPrograma {
-
-    public static void main (String [ ] args) {
-
-        System.out.println ("Empezamos el programa");
-
-        System.out.println ("Introduzca la línea que quiere usar:");
-
-        String entradaTeclado = "";
-
-        Scanner entradaEscaner = new Scanner (System.in);
-        
-         entradaTeclado = entradaEscaner.nextLine ();
-         
-         System.out.println ("La linea que ha solicitado es \"" + entradaTeclado +"\"");
-         }
-        }
+        Scanner teclado = new Scanner(System.in);
+        System.out.print("Introduzca su linea: ");
+        linea = teclado.nextLine();
+        System.out.println("¡Va a usar la línea: " + linea + "!");
+    
+    
+    }
+}

@@ -4,3 +4,5 @@ https://www.jc-mouse.net/java/matriz-de-adyacencia-representacion-de-grafos-en-j
 http://www.myjavazone.com/2011/03/grafo-dinamico.html
 https://www.ciberaula.com/cursos/java/grafos_java.php
 https://devs4j.com/2017/11/24/implementa-un-grafo-de-ciudades-en-java/
+
+Un menú de opciones con un switch

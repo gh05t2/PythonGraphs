@@ -1,22 +1,42 @@
 package es.slb;
 
-import javax.swing.JOptionPane;
 
 public class MatrizAdyacencia {
 
 	public static void Grafos() {
 		
+		
+		
+		String buses= new String ("AB");
+		int bs=0;
 		int i,j;
-		int[][] matriz;
+		int[][] matriz= new int [10][10];
 		
-		System.out.printf("Lineas de Trenes: %d",matriz[i][j] );
-		JOptionPane.showInputDialog("Elija una línea entre: ");
+	
 		
-		char linea;
+		for (i=0; i<matriz.length;i++) {
+			
 		
-		switch (linea) {
-			case a: 
+			
+			for( j=0; j<matriz.length; j++) {
+				char bus1=buses.charAt(bs);	
+				bs++;
+				matriz [i][j]= (bus1 + (i+1));
+				
+				
+				
+				if(bs==2) {
+					bs=0;
+					
+					
+				}
 			}
+				
+		}
+		
+		
+		
+		
 			
 
 	}

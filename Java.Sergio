@@ -1,0 +1,24 @@
+package es.slb;
+
+import javax.swing.JOptionPane;
+
+public class MatrizAdyacencia {
+
+	public static void Grafos() {
+		
+		int i,j;
+		int[][] matriz;
+		
+		System.out.printf("Lineas de Trenes: %d",matriz[i][j] );
+		JOptionPane.showInputDialog("Elija una línea entre: ");
+		
+		char linea;
+		
+		switch (linea) {
+			case a: 
+			}
+			
+
+	}
+
+}

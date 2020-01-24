@@ -1,16 +1,11 @@
 package Grafos;
 public class MatrizAdyacencia{
-  private int filas;
-  private int columnas;
-  private String matriz[][];
-  
-  
-  /**
-    Constructor de objeto Matriz adyacencia
-  */
-  public MatrizAdyacencia(int filas,int columnas){
-    this.filas=filas;
-    this.columnas=columnas;
-    matriz=new String[this
+  public static main(String[] args){
+    String ciudades[][]={["Ciudad Real","2","Toledo"],["7","Cuenca","3"],["Barcelona","1","Donosti"]};
+    for(int i=0;i<ciudades.length;i++){
+      for(int j=0;j<ciudades.length;j++)
+        System.out.printf("%d ",ciudades[i][j]);
+      System.out.println();
+    }
   }
 }

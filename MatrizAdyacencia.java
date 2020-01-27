@@ -8,6 +8,8 @@ public class MatrizAdyacencia {
         
         System.out.println("Elige un lugar de partida:");
         elegirCiudad(ciudades,viaje);
+        System.out.println("Elige un lugar de destino");
+        elsegirCiudad(ciudades,viaje);
         System.out.println(ciudades[viaje[0]][viaje[1]]);
     }
     
@@ -17,17 +19,17 @@ public class MatrizAdyacencia {
     @param viaje
   */
     public static void elegirCiudad(String[][] ciudades, int[] viaje){
-      
         Scanner sc=new Scanner(System.in);
         int k=1,option;
-        StringBuilder str=new StringBuilder();
         for (String[] ciudad : ciudades) {
             for (int j = 0; j<ciudades[0].length; j++){
-                System.out.printf("%d)%s\n", k, ciudad[j]);
+                if(ciudad[j]!=ciudades[viaje[0]][viaje[1]]){
+                    System.out.printf("%d)%s\n", k, ciudad[j]);
+                }
                 k++;
             }
         }
-        option=sc.nextInt();
+        option=sc.nextInt();sc.close();
         almacenarCiudad(ciudades,viaje,option);
     }
     

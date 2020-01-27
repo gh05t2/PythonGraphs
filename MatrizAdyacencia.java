@@ -33,6 +33,9 @@ public class MatrizAdyacencia {
     
     /**
       Método que almacena la posición en la matriz de la ciudad elegida
+      @param ciudades
+      @param viaje
+      @param option
     */
     public static void almacenarCiudad(String[][] ciudades,int[] viaje,
             int option){

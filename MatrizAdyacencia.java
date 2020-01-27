@@ -9,7 +9,7 @@ public class MatrizAdyacencia {
         System.out.println("Elige un lugar de partida:");
         elegirCiudad(ciudades,viaje);
         System.out.println("Elige un lugar de destino");
-        elsegirCiudad(ciudades,viaje);
+        elegirCiudad(ciudades,viaje);
         System.out.println(ciudades[viaje[0]][viaje[1]]);
     }
     

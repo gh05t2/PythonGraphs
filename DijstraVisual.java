@@ -11,6 +11,7 @@ public class Dijkstra {
       new Graph.Edge("Madrid", "Cuenca", 2),
       new Graph.Edge("Sevilla", "Murcia", 6),
       new Graph.Edge("Murcia", "Cuenca", 9),
+      new Graph.Edge("Barcelona", "URSS", 9001)
    };
  
 public static void main(String[] args) {

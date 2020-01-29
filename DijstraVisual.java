@@ -62,7 +62,7 @@ class Graph {
 		else
 		{
 			this.previous.printPath();
-			System.out.printf(" %d Km -> %s", this.dist, this.name);
+			System.out.printf("  -- %dKm -->  %s", this.dist, this.name);
 		}
 	}
  

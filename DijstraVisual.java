@@ -11,6 +11,7 @@ public class Dijkstra {
       new Graph.Edge("Madrid", "Cuenca", 2),
       new Graph.Edge("Sevilla", "Murcia", 6),
       new Graph.Edge("Murcia", "Cuenca", 9),
+      new Graph.Edge("Cuenca", "Barcelona", 14),
       new Graph.Edge("Barcelona", "URSS", 9001)
    };
  
@@ -64,7 +65,7 @@ class Graph {
 		else
 		{
 			this.previous.printPath();
-			System.out.printf(" a %dKm de %s", this.dist, this.name);
+			System.out.printf(" a %dKm de %s,\n", this.dist, this.name);
 		}
 	}
  

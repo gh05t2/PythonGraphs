@@ -51,6 +51,7 @@ class Graph {
  
 	public Vertice(String name)
 	{
+		//Está guardando en la variable global de la clase el valor del objeto que se le da al crearlo
 		this.name = name; //this. es el global que lo igualas a la variable por teclado. Es un objeto.
 	}
  

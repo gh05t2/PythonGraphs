@@ -56,7 +56,7 @@ class Graph {
 	{
 		if (this == this.previous)
 		{
-			System.out.printf("%s", this.name);
+			System.out.printf("%s ", this.name);
 		}
 		else if (this.previous == null)
 		{
@@ -65,7 +65,7 @@ class Graph {
 		else
 		{
 			this.previous.printPath();
-			System.out.printf(" a %dKm de %s,\n", this.dist, this.name);
+			System.out.printf("a %dKm de %s,\n", this.dist, this.name);
 		}
 	}
  

@@ -1,39 +1,41 @@
 import java.util.*;
  
 public class Dijkstra {
-   private static final Graph.Edge[] GRAPH = { 
-      new Graph.Edge("Barcelona", "Logroño", 7),
-      new Graph.Edge("Barcelona", "Madrid", 9),
-      new Graph.Edge("Barcelona", "Cuenca", 14),
-      new Graph.Edge("Logroño", "Madrid", 10),
-      new Graph.Edge("Logroño", "Sevilla", 15),
-      new Graph.Edge("Madrid", "Sevilla", 11),
-      new Graph.Edge("Madrid", "Cuenca", 2),
-      new Graph.Edge("Sevilla", "Murcia", 6),
-      new Graph.Edge("Murcia", "Cuenca", 9),
-      new Graph.Edge("Cuenca", "Barcelona", 14),
-      new Graph.Edge("Barcelona", "URSS", 9001)
+   private static final Graph.Dam[] GRAPH = { 
+      new Graph.Dam("Barcelona", "Logroño", 398),
+      new Graph.Dam("Barcelona", "Madrid", 168),
+      new Graph.Dam("Barcelona", "Cuenca", 474),
+      new Graph.Dam("Logroño", "Madrid", 438),
+      new Graph.Dam("Logroño", "Sevilla", 970),
+      new Graph.Dam("Madrid", "Sevilla", 314),
+      new Graph.Dam("Madrid", "Cuenca", 227),
+      new Graph.Dam("Sevilla", "Murcia", 268),
+      new Graph.Dam("Murcia", "Cuenca", 120),
+      new Graph.Dam("Cuenca","Barcelona",540),
+      new Graph.Dam("Barcelona","URSS",9001),
    };
  
 public static void main(String[] args) {
       Scanner sc=new Scanner(System.in);
       Graph g = new Graph(GRAPH);
-      System.out.print("Introduce el lugar de partida: ");
+      System.out.println("Introduce el lugar de partida: ");
       g.dijkstra(sc.nextLine());
+      System.out.println("");
       System.out.println("Introduce el destino: ");
       g.printPath(sc.nextLine());
+      
       //g.printAllPaths();
    }
 }
 
 class Graph {
-   private final Map<String, Vertex> graph; // mapping of vertex names to Vertex objects, built from a set of Edges
+   private final Map<String, Vertice> graph; // mapping of vertex names to Vertex objects, built from a set of Edges
  
    /** One edge of the graph (only used by Graph constructor) */
-   public static class Edge {
+   public static class Dam {
       public final String v1, v2;
       public final int dist;
-      public Edge(String v1, String v2, int dist) {
+      public Dam(String v1, String v2, int dist) {
          this.v1 = v1;
          this.v2 = v2;
          this.dist = dist;
@@ -41,22 +43,22 @@ class Graph {
    }
  
    /** One vertex of the graph, complete with mappings to neighbouring vertices */
-  public static class Vertex implements Comparable<Vertex>{
+  public static class Vertice implements Comparable<Vertice>{
 	public final String name;
 	public int dist = Integer.MAX_VALUE; // MAX_VALUE assumed to be infinity
-	public Vertex previous = null;
-	public final Map<Vertex, Integer> neighbours = new HashMap<>();
+	public Vertice previous = null;
+	public final Map<Vertice, Integer> neighbours = new HashMap<>();
  
-	public Vertex(String name)
+	public Vertice(String name)
 	{
-		this.name = name;
+		this.name = name; //this. es el global que lo igualas a la variable por teclado. Es un objeto.
 	}
  
 	private void printPath()
-	{
+	{      
 		if (this == this.previous)
 		{
-			System.out.printf("%s ", this.name);
+			System.out.printf("%n%s :", this.name);
 		}
 		else if (this.previous == null)
 		{
@@ -65,11 +67,13 @@ class Graph {
 		else
 		{
 			this.previous.printPath();
-			System.out.printf("a %dKm de %s\n", this.dist, this.name);
+                        
+			System.out.printf("%n- Está a %dKm de %s.", this.dist, this.name);
+                        
 		}
 	}
  
-        @Override public int compareTo(Vertex other)
+        @Override public int compareTo(Vertice other)
 	{
 		if (dist == other.dist)
 			return name.compareTo(other.name);
@@ -84,17 +88,17 @@ class Graph {
 }
  
    /** Builds a graph from a set of edges */
-   public Graph(Edge[] edges) {
+   public Graph (Dam[] edges) {
       graph = new HashMap<>(edges.length);
  
       //one pass to find all vertices
-      for (Edge e : edges) {
-         if (!graph.containsKey(e.v1)) graph.put(e.v1, new Vertex(e.v1));
-         if (!graph.containsKey(e.v2)) graph.put(e.v2, new Vertex(e.v2));
+      for (Dam e : edges) {
+         if (!graph.containsKey(e.v1)) graph.put(e.v1, new Vertice(e.v1));
+         if (!graph.containsKey(e.v2)) graph.put(e.v2, new Vertice(e.v2));
       }
  
       //another pass to set neighbouring vertices
-      for (Edge e : edges) {
+      for (Dam e : edges) {
          graph.get(e.v1).neighbours.put(graph.get(e.v2), e.dist);
          //graph.get(e.v2).neighbours.put(graph.get(e.v1), e.dist); // also do this for an undirected graph
       }
@@ -106,11 +110,11 @@ class Graph {
          System.err.printf("La ciudad \"%s\"\n no está recogida en el grafo", startName);
          return;
       }
-      final Vertex source = graph.get(startName);
-      NavigableSet<Vertex> q = new TreeSet<>();
+      final Vertice source = graph.get(startName);
+      NavigableSet<Vertice> q = new TreeSet<>();
  
       // set-up vertices
-      for (Vertex v : graph.values()) {
+      for (Vertice v : graph.values()) {
          v.previous = v == source ? source : null;
          v.dist = v == source ? 0 : Integer.MAX_VALUE;
          q.add(v);
@@ -120,15 +124,15 @@ class Graph {
    }
  
    /** Implementation of dijkstra's algorithm using a binary heap. */
-   private void dijkstra(final NavigableSet<Vertex> q) {      
-      Vertex u, v;
+   private void dijkstra(final NavigableSet<Vertice> q) {      
+      Vertice u, v;
       while (!q.isEmpty()) {
  
          u = q.pollFirst(); // vertex with shortest distance (first iteration will return source)
          if (u.dist == Integer.MAX_VALUE) break; // we can ignore u (and any other remaining vertices) since they are unreachable
  
          //look at distances to each neighbour
-         for (Map.Entry<Vertex, Integer> a : u.neighbours.entrySet()) {
+         for (Map.Entry<Vertice, Integer> a : u.neighbours.entrySet()) {
             v = a.getKey(); //the neighbour in this iteration
  
             final int alternateDist = u.dist + a.getValue();
@@ -145,7 +149,7 @@ class Graph {
    /** Prints a path from the source to the specified vertex */
    public void printPath(String endName) {
       if (!graph.containsKey(endName)) {
-         System.err.printf("Graph doesn't contain end vertex \"%s\"\n", endName);
+         System.err.printf("La ciudad \"%s\"\n no está recogida en el grafo", endName);
          return;
       }
  
@@ -154,7 +158,7 @@ class Graph {
    }
    /** Prints the path from the source to every vertex (output order is not guaranteed) */
    public void printAllPaths() {
-      for (Vertex v : graph.values()) {
+      for (Vertice v : graph.values()) {
          v.printPath();
          System.out.println();
       }

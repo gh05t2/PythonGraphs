@@ -17,9 +17,9 @@ public class DijkstraTecleado {
       Scanner sc=new Scanner(System.in);
       Graph g = new Graph(GRAPH);
       System.out.print("Introduce el lugar de partida: ");
-      g.dijkstra(sc.next());
+      g.dijkstra(sc.nextLine());
       System.out.print("Introduce el destino: ");
-      g.printPath(sc.next());
+      g.printPath(sc.nextLine());
       //g.printAllPaths();
    }
 }

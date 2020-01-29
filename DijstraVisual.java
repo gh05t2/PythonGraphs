@@ -59,7 +59,7 @@ class Graph {
 		}
 		else if (this.previous == null)
 		{
-			System.out.printf("%s(unreached)", this.name);
+			System.out.printf("%s(No se ha elegido un punto de partida válido)", this.name);
 		}
 		else
 		{
@@ -102,7 +102,7 @@ class Graph {
    /** Runs dijkstra using a specified source vertex */ 
    public void dijkstra(String startName) {
       if (!graph.containsKey(startName)) {
-         System.err.printf("Graph doesn't contain start vertex \"%s\"\n", startName);
+         System.err.printf("La ciudad \"%s\"\n no está recogida en el grafo", startName);
          return;
       }
       final Vertex source = graph.get(startName);

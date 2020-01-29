@@ -12,17 +12,18 @@ public class Dijkstra {
       new Graph.Edge("Sevilla", "Murcia", 6),
       new Graph.Edge("Murcia", "Cuenca", 9),
    };
-   private static final String START = "Barcelona";
-   private static final String END = "Murcia";
  
-   public static void main(String[] args) {
+public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
       Graph g = new Graph(GRAPH);
-      g.dijkstra(START);
-      g.printPath(END);
+      System.out.print("Introduce el lugar de partida: ");
+      g.dijkstra(sc.nextLine());
+      System.out.println("Introduce el destino: ");
+      g.printPath(sc.nextLine());
       //g.printAllPaths();
    }
 }
- 
+
 class Graph {
    private final Map<String, Vertex> graph; // mapping of vertex names to Vertex objects, built from a set of Edges
  
@@ -62,7 +63,7 @@ class Graph {
 		else
 		{
 			this.previous.printPath();
-			System.out.printf("  -- %dKm -->  %s", this.dist, this.name);
+			System.out.printf(" a %dKm de %s", this.dist, this.name);
 		}
 	}
  

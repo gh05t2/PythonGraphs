@@ -1,7 +1,6 @@
-import java.io.*;
 import java.util.*;
  
-public class Dijkstra {
+public class DijkstraTecleado {
    private static final Graph.Edge[] GRAPH = {
       new Graph.Edge("a", "b", 7),
       new Graph.Edge("a", "c", 9),
@@ -68,6 +67,7 @@ class Graph {
 		}
 	}
  
+	@Override
 	public int compareTo(Vertex other)
 	{
 		if (dist == other.dist)

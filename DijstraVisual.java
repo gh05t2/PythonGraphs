@@ -93,15 +93,15 @@ class Graph {
    public Graph (Dam[] edges) {
       graph = new HashMap<>(edges.length);
  
-      //one pass to find all vertices
-      for (Dam e : edges) {
-         if (!graph.containsKey(e.v1)) graph.put(e.v1, new Vertice(e.v1));
-         if (!graph.containsKey(e.v2)) graph.put(e.v2, new Vertice(e.v2));
+      /** Crea un nuevo mapa recorriendo todos los vertices*/
+      for (Dam Murcia : edges) {
+         if (!graph.containsKey(Murcia.v1)) graph.put(Murcia.v1, new Vertice(Murcia.v1));
+         if (!graph.containsKey(Murcia.v2)) graph.put(Murcia.v2, new Vertice(Murcia.v2));
       }
  
       //another pass to set neighbouring vertices
-      for (Dam e : edges) {
-         graph.get(e.v1).neighbours.put(graph.get(e.v2), e.dist);
+      for (Dam Murcia : edges) {
+         graph.get(Murcia.v1).neighbours.put(graph.get(Murcia.v2), Murcia.dist);
          //graph.get(e.v2).neighbours.put(graph.get(e.v1), e.dist); // also do this for an undirected graph
       }
    }

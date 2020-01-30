@@ -43,7 +43,11 @@ class Graph {
    }
  
  
-   /** Compara un vertice con otro vertice adyacente en un mapa virtual*/
+   /** 
+   * Crea una clase Vértice que implementa la clase Comparable,
+   * que compara un objeto vertice con otro objeto vertice adyacente
+   * en un mapa virtual
+   */
   public static class Vertice implements Comparable<Vertice>{
 	public final String name;
 	public int dist = Integer.MAX_VALUE; 

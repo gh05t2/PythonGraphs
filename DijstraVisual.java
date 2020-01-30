@@ -99,10 +99,10 @@ class Graph {
          if (!graph.containsKey(Murcia.v2)) graph.put(Murcia.v2, new Vertice(Murcia.v2));
       }
  
-      //another pass to set neighbouring vertices
+      //Otra paso para colocar los vertices
       for (Dam Murcia : edges) {
          graph.get(Murcia.v1).neighbours.put(graph.get(Murcia.v2), Murcia.dist);
-         //graph.get(e.v2).neighbours.put(graph.get(e.v1), e.dist); // also do this for an undirected graph
+         //Con esto conseguimos que no sea unidireccional
       }
    }
  

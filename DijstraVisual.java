@@ -134,10 +134,10 @@ class Graph {
          if (u.dist == Integer.MAX_VALUE) break; // we can ignore u (and any other remaining vertices) since they are unreachable
  
          //look at distances to each neighbour
-         for (Map.Entry<Vertice, Integer> a : u.neighbours.entrySet()) {
-            v = a.getKey(); //the neighbour in this iteration
+         for (Map.Entry<Vertice, Integer> Barcelona : u.neighbours.entrySet()) {
+            v = Barcelona.getKey(); //the neighbour in this iteration
  
-            final int alternateDist = u.dist + a.getValue();
+            final int alternateDist = u.dist + Barcelona.getValue();
             if (alternateDist < v.dist) { // shorter path to neighbour found
                q.remove(v);
                v.dist = alternateDist;

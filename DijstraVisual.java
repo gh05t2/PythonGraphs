@@ -43,7 +43,7 @@ class Graph {
    }
  
  
-   /** Compara un vertice con otro vertice vecino en un mapa virtual*/
+   /** Compara un vertice con otro vertice adyacente en un mapa virtual*/
   public static class Vertice implements Comparable<Vertice>{
 	public final String name;
 	public int dist = Integer.MAX_VALUE; 
@@ -106,7 +106,7 @@ class Graph {
       }
    }
  
-   /** Runs dijkstra using a specified source vertex */ 
+   /** Ejecuta Dijkstra usando un tipo de vértice */ 
    public void dijkstra(String startName) {
       if (!graph.containsKey(startName)) {
          System.err.printf("La ciudad \"%s\"\n no está recogida en el grafo", startName);
@@ -115,7 +115,7 @@ class Graph {
       final Vertice source = graph.get(startName);
       NavigableSet<Vertice> q = new TreeSet<>();
  
-      // set-up vertices
+      // Coloca los vertices
       for (Vertice v : graph.values()) {
          v.previous = v == source ? source : null;
          v.dist = v == source ? 0 : Integer.MAX_VALUE;

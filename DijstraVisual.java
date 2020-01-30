@@ -106,7 +106,7 @@ class Graph {
       }
    }
  
-   /** Ejecuta Dijkstra usando un tipo de vértice */ 
+   /** Ejecuta Dijkstra usando vértice origen */ 
    public void dijkstra(String startName) {
       if (!graph.containsKey(startName)) {
          System.err.printf("La ciudad \"%s\"\n no está recogida en el grafo", startName);
@@ -131,14 +131,14 @@ class Graph {
       while (!q.isEmpty()) {
  
          u = q.pollFirst(); // Vertice con la menor distancia (La primera interacción se devolverá)
-         if (u.dist == Integer.MAX_VALUE) break; // we can ignore u (and any other remaining vertices) since they are unreachable
+         if (u.dist == Integer.MAX_VALUE) break; // ignoramos los vertices inalcanzables
  
-         //look at distances to each neighbour
+         //Comprueba la distancia entre los vertices vecinos
          for (Map.Entry<Vertice, Integer> Barcelona : u.neighbours.entrySet()) {
-            v = Barcelona.getKey(); //the neighbour in this iteration
+            v = Barcelona.getKey(); 
  
             final int alternateDist = u.dist + Barcelona.getValue();
-            if (alternateDist < v.dist) { // shorter path to neighbour found
+            if (alternateDist < v.dist) {
                q.remove(v);
                v.dist = alternateDist;
                v.previous = u;
@@ -148,7 +148,7 @@ class Graph {
       }
    }
  
-   /** Prints a path from the source to the specified vertex */
+   /**Imprime en pantalla una ruta desde el origen hasta el vértice especificado */
    public void printPath(String endName) {
       if (!graph.containsKey(endName)) {
          System.err.printf("La ciudad \"%s\"\n no está recogida en el grafo", endName);
@@ -158,7 +158,7 @@ class Graph {
       graph.get(endName).printPath();
       System.out.println();
    }
-   /** Prints the path from the source to every vertex (output order is not guaranteed) */
+   /** Imprime la ruta desde el origen a cada vértice */
    public void printAllPaths() {
       for (Vertice v : graph.values()) {
          v.printPath();

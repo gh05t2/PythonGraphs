@@ -125,12 +125,12 @@ class Graph {
       dijkstra(q);
    }
  
-   /** Implementation of dijkstra's algorithm using a binary heap. */
+   /** Implementa el algoritmo de Dijkstra */
    private void dijkstra(final NavigableSet<Vertice> q) {      
       Vertice u, v;
       while (!q.isEmpty()) {
  
-         u = q.pollFirst(); // vertex with shortest distance (first iteration will return source)
+         u = q.pollFirst(); // Vertice con la menor distancia (La primera interacción se devolverá)
          if (u.dist == Integer.MAX_VALUE) break; // we can ignore u (and any other remaining vertices) since they are unreachable
  
          //look at distances to each neighbour

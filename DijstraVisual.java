@@ -24,7 +24,7 @@ public static void main(String[] args) {
       System.out.println("Introduce el destino: ");
       g.printPath(sc.nextLine());
       
-      //g.printAllPaths();
+  
    }
 }
 
@@ -42,10 +42,11 @@ class Graph {
       }
    }
  
-   /** One vertex of the graph, complete with mappings to neighbouring vertices */
+ 
+   /** Compara un vertice con otro vertice vecino en un mapa virtual*/
   public static class Vertice implements Comparable<Vertice>{
 	public final String name;
-	public int dist = Integer.MAX_VALUE; // MAX_VALUE assumed to be infinity
+	public int dist = Integer.MAX_VALUE; 
 	public Vertice previous = null;
 	public final Map<Vertice, Integer> neighbours = new HashMap<>();
  
@@ -54,7 +55,7 @@ class Graph {
 		//Está guardando en la variable global de la clase el valor del objeto que se le da al crearlo
 		this.name = name; //this. es el global que lo igualas a la variable por teclado. Es un objeto.
 	}
- 
+  /** Comprueba si la ubicacion elegida existe */
 	private void printPath()
 	{      
 		if (this == this.previous)
@@ -73,7 +74,7 @@ class Graph {
                         
 		}
 	}
- 
+ /**  @Override permite modificar otros metodos. Con el siguiente método comparamos la distancia entre dos puntos*/
         @Override public int compareTo(Vertice other)
 	{
 		if (dist == other.dist)
@@ -88,7 +89,7 @@ class Graph {
 	}
 }
  
-   /** Builds a graph from a set of edges */
+   /** Crea un grafo a partir de un conjunto de bordes */
    public Graph (Dam[] edges) {
       graph = new HashMap<>(edges.length);
  
@@ -164,4 +165,5 @@ class Graph {
          System.out.println();
       }
    }
+}
 }
